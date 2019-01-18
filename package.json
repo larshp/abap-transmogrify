@@ -1,0 +1,40 @@
+{
+  "name": "abap-transmogrify",
+  "version": "0.0.1",
+  "description": "Transmogrify ABAP objects",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "bin": {
+    "atran": "./atran"
+  },
+  "scripts": {
+    "precompile": "rm -rf build",
+    "compile": "tsc --pretty",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
+    "test": "npm run compile",
+    "posttest": "npm run tslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larshp/abap-transmogrify.git"
+  },
+  "keywords": [
+    "ABAP"
+  ],
+  "author": "Lars Hvam Petersen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/larshp/abap-transmogrify/issues"
+  },
+  "homepage": "https://github.com/larshp/abap-transmogrify#readme",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^10.12.18",
+    "tslint": "^5.12.1",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.2.4"
+  }
+}
