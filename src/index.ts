@@ -1,7 +1,6 @@
-import * as minimist from "minimist";
 
 async function run() {
-  const argv = minimist(process.argv.slice(2));
+  const argv = process.argv.slice(2);
   console.dir(argv);
 
   return "sdf";
