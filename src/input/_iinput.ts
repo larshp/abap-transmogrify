@@ -1,5 +1,8 @@
-import {IObject} from "../objects/_iobject";
+import {IFile} from "../_ifile";
+import {ObjectType} from "../object_types";
+import {IParser} from "./_iparser";
 
 export interface IInput {
-  parse(files: File[]): IObject[];
+  check(file: IFile): {type: ObjectType, name: string} | undefined;
+  getParser(type: ObjectType): IParser;
 }

@@ -1,5 +1,6 @@
+import {ObjectType} from "../object_types";
 
 export interface IObject {
-  getType(): string;
   getName(): string;
+  getType(): ObjectType;
 }

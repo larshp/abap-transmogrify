@@ -1,4 +1,5 @@
 import {IObject} from "./_iobject";
+import {ObjectType} from "../object_types";
 
 export abstract class AObject implements IObject {
   private name: string;
@@ -7,7 +8,7 @@ export abstract class AObject implements IObject {
     this.name = name;
   }
 
-  public abstract getType(): string;
+  public abstract getType(): ObjectType;
 
   public getName() {
     return this.name;

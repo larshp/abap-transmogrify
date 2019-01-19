@@ -1,5 +1,5 @@
 
-export class File {
+export class MemoryFile {
   private filename: string;
   private raw: string;
 
