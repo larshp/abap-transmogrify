@@ -1,4 +1,5 @@
 # abap-transmogrify
+[![Build Status](https://travis-ci.org/larshp/abap-transmogrify.svg?branch=master)](https://travis-ci.org/larshp/abap-transmogrify)
 
 Convert between different ABAP file formats.
 
