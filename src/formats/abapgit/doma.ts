@@ -3,8 +3,13 @@ import {IFile} from "../../_ifile";
 import {IParser} from "../_iparser";
 import {IObject} from "../../objects/_iobject";
 import {DOMA} from "../../objects/doma";
+import {IWriter} from "../_iwriter";
 
-export class ABAPGitDOMAParser implements IParser {
+export class ABAPGitDOMA implements IParser, IWriter {
+
+  public write(_obj: IObject): IFile[] {
+    throw new Error("Method not implemented.");
+  }
 
   public parse(file: IFile, object: IObject) {
     const parsed = xml.parse(file).abapGit["asx:abap"]["asx:values"].DD01V;

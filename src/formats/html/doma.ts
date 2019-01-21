@@ -5,7 +5,7 @@ import {MemoryFile} from "../../memory_file";
 import {ObjectType} from "../../object_types";
 import {DOMA} from "../../objects/doma";
 
-export class HTMLDOMAWriter implements IWriter {
+export class HTMLDOMA implements IWriter {
   public write(obj: IObject): IFile[] {
     const name = obj.getName() + "." + ObjectType[obj.getType()].toLowerCase() + ".html";
 

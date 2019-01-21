@@ -1,11 +1,11 @@
-import {ABAPGitInput} from "./input/abapgit";
+import {ABAPGitInput} from "./formats/abapgit";
 import {IFile} from "./_ifile";
 import {IObject} from "./objects/_iobject";
 import {DOMA} from "./objects/doma";
 import {ObjectType} from "./object_types";
 import {Format} from "./formats";
-import {HTMLOutput} from "./output/html";
-import {IOutput} from "./output/_ioutput";
+import {HTMLOutput} from "./formats/html";
+import {IOutput} from "./formats/_ioutput";
 
 export class Registry {
   private objects: IObject[];
