@@ -12,8 +12,8 @@
     "compile": "tsc --pretty",
     "tslint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
     "pretest": "npm run compile",
-    "test": "npm run tslint",
-    "posttest": "mocha --recursive --reporter progress build/test"
+    "test": "mocha --recursive --reporter progress build/test",
+    "posttest": "npm run tslint"
   },
   "repository": {
     "type": "git",
