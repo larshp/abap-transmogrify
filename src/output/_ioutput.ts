@@ -1,5 +1,6 @@
 import {IObject} from "../objects/_iobject";
+import {IFile} from "../_ifile";
 
 export interface IOutput {
-  output(objects: IObject[]): File[];
+  output(object: IObject): IFile[];
 }

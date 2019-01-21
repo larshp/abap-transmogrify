@@ -13,4 +13,5 @@ export abstract class AObject implements IObject {
   public getName() {
     return this.name;
   }
+
 }

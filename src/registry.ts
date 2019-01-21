@@ -4,6 +4,8 @@ import {IObject} from "./objects/_iobject";
 import {DOMA} from "./objects/doma";
 import {ObjectType} from "./object_types";
 import {Format} from "./formats";
+import {HTMLOutput} from "./output/html";
+import {IOutput} from "./output/_ioutput";
 
 export class Registry {
   private objects: IObject[];
@@ -45,14 +47,31 @@ export class Registry {
 // todo, change this to some dynamic stuff
     switch (type) {
       case ObjectType.DOMA:
-        return new DOMA(name);
+        const obj = new DOMA(name);
+        this.objects.push(obj);
+        return obj;
       default:
         throw new Error("Unknown object type");
     }
   }
 
-  public output(_format: Format): IFile[] {
-    return [];
+  public output(format: Format): IFile[] {
+    let ret: IFile[] = [];
+    let output: IOutput;
+
+    switch (format) {
+      case Format.HTML:
+        output = new HTMLOutput();
+        break;
+      default:
+        throw new Error("Registry output: unknown format");
+    }
+
+    for (const obj of this.objects) {
+      ret = ret.concat(output.output(obj));
+    }
+
+    return ret;
   }
 
 }

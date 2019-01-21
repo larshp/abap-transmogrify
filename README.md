@@ -7,7 +7,7 @@ Convert between different ABAP file formats.
 | CLAS | _ _     | _ _  | _ _    | _ _     | N/A  |
 | DCLS | _ _     | _ _  | _ _    | _ _     | N/A  |
 | DDLS | _ _     | _ _  | _ _    | _ _     | N/A  |
-| DOMA | _ _     | _ _  | _ _    | _ _     | _    |
+| DOMA | R _     | _ _  | _ _    | _ _     | W    |
 | DTEL | _ _     | _ _  | _ _    | _ _     | _    |
 | FUGR | _ _     | _ _  | _ _    | _ _     | N/A  |
 | INTF | _ _     | _ _  | _ _    | _ _     | N/A  |
@@ -25,3 +25,5 @@ Convert between different ABAP file formats.
 * Translations? Only one language?
 * Limit parsing and knowledge about semantics
 * With or without carriage returns?
+* No validation of data consistency
+* However validation of format consistency?
