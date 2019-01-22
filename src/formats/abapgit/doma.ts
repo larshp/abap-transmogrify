@@ -1,3 +1,4 @@
+import * as os from "os";
 import * as xml from "../../xml";
 import {IFile} from "../../_ifile";
 import {IParser} from "../_iparser";
@@ -12,23 +13,21 @@ export class ABAPGitDOMA implements IParser, IWriter {
   public write(obj: IObject): IFile[] {
     const doma = obj as DOMA;
 
-    let contents = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-      "<abapGit version=\"v1.0.0\" serializer=\"LCL_OBJECT_DOMA\" serializer_version=\"v1.0.0\">\n" +
-      " <asx:abap xmlns:asx=\"http://www.sap.com/abapxml\" version=\"1.0\">\n" +
-      "  <asx:values>\n" +
-      "   <DD01V>\n" +
-      "    <DOMNAME>ZABAPGIT_UNIT_TEST</DOMNAME>\n" +
-      "    <DDLANGUAGE>E</DDLANGUAGE>\n" +
-      "    <DATATYPE>" + doma.getDataType() + "</DATATYPE>\n" +
-      "    <LENG>" + doma.getLength() + "</LENG>\n" +
-      "    <OUTPUTLEN>" + doma.getOutputLength() + "</OUTPUTLEN>\n" +
-      "    <DDTEXT>" + doma.getDescription() + "</DDTEXT>\n" +
-      "   </DD01V>\n" +
-      "  </asx:values>\n" +
-      " </asx:abap>\n" +
+    const contents = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + os.EOL +
+      "<abapGit version=\"v1.0.0\" serializer=\"LCL_OBJECT_DOMA\" serializer_version=\"v1.0.0\">" + os.EOL +
+      " <asx:abap xmlns:asx=\"http://www.sap.com/abapxml\" version=\"1.0\">" + os.EOL +
+      "  <asx:values>" + os.EOL +
+      "   <DD01V>" + os.EOL +
+      "    <DOMNAME>ZABAPGIT_UNIT_TEST</DOMNAME>" + os.EOL +
+      "    <DDLANGUAGE>E</DDLANGUAGE>" + os.EOL +
+      "    <DATATYPE>" + doma.getDataType() + "</DATATYPE>" + os.EOL +
+      "    <LENG>" + doma.getLength() + "</LENG>" + os.EOL +
+      "    <OUTPUTLEN>" + doma.getOutputLength() + "</OUTPUTLEN>" + os.EOL +
+      "    <DDTEXT>" + doma.getDescription() + "</DDTEXT>" + os.EOL +
+      "   </DD01V>" + os.EOL +
+      "  </asx:values>" + os.EOL +
+      " </asx:abap>" + os.EOL +
       "</abapGit>";
-
-    contents = contents.replace(/\n/g, "\r\n");
 
     return [new MemoryFile(ABAPGitHelper.getObjectFilename(obj), contents)];
   }
