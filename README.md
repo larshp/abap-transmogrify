@@ -8,7 +8,7 @@ Convert between different ABAP file formats.
 | CLAS | _ _     | _ _  | _ _    | _ _     | N/A  |
 | DCLS | _ _     | _ _  | _ _    | _ _     | N/A  |
 | DDLS | _ _     | _ _  | _ _    | _ _     | N/A  |
-| DOMA | R _     | _ _  | _ _    | _ _     | W    |
+| DOMA | R W     | _ _  | _ _    | _ _     | W    |
 | DTEL | _ _     | _ _  | _ _    | _ _     | _    |
 | FUGR | _ _     | _ _  | _ _    | _ _     | N/A  |
 | INTF | _ _     | _ _  | _ _    | _ _     | N/A  |

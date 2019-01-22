@@ -4,7 +4,7 @@ import {ObjectType} from "../object_types";
 import {IFile} from "../_ifile";
 import {HTMLDOMA} from "./html/doma";
 
-export class HTMLOutput implements IOutput {
+export class HTML implements IOutput {
   public output(object: IObject): IFile[] {
     switch (object.getType()) {
       case ObjectType.DOMA:

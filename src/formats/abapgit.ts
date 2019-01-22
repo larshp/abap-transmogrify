@@ -3,8 +3,20 @@ import {IFile} from "../_ifile";
 import {ObjectType} from "../object_types";
 import {IParser} from "./_iparser";
 import {ABAPGitDOMA} from "./abapgit/doma";
+import {IOutput} from "./_ioutput";
+import {IObject} from "../objects/_iobject";
 
-export class ABAPGitInput implements IInput {
+export class ABAPGit implements IInput, IOutput {
+
+  public output(object: IObject): IFile[] {
+    switch (object.getType()) {
+      case ObjectType.DOMA:
+        return new ABAPGitDOMA().write(object);
+      default:
+        throw new Error("ABAPGit: Unsupported object type " + object.getType());
+    }
+  }
+
   public check(file: IFile): {type: ObjectType, name: string} | undefined {
     const base = file.getFilename().split("/").reverse()[0];
     const name = base.split(".")[0];

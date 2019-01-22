@@ -1,10 +1,10 @@
-import {ABAPGitInput} from "./formats/abapgit";
+import {ABAPGit} from "./formats/abapgit";
 import {IFile} from "./_ifile";
 import {IObject} from "./objects/_iobject";
 import {DOMA} from "./objects/doma";
 import {ObjectType} from "./object_types";
 import {Format} from "./formats";
-import {HTMLOutput} from "./formats/html";
+import {HTML} from "./formats/html";
 import {IOutput} from "./formats/_ioutput";
 
 export class Registry {
@@ -22,15 +22,17 @@ export class Registry {
     }
   }
 
-  public addFile(file: IFile) {
+  public addFile(file: IFile): Registry {
 // todo, make this stuff dynamic so it works for all formats
-    const abapgit = new ABAPGitInput();
+    const abapgit = new ABAPGit();
     const git = abapgit.check(file);
     if (git) {
       abapgit.getParser(git.type).parse(file, this.findOrCreateObject(git.type, git.name));
     }
 
 // todo, add the other input formats here?
+
+    return this;
   }
 
   public remove(_filename: string) {
@@ -61,7 +63,10 @@ export class Registry {
 
     switch (format) {
       case Format.HTML:
-        output = new HTMLOutput();
+        output = new HTML();
+        break;
+      case Format.abapGit:
+        output = new ABAPGit();
         break;
       default:
         throw new Error("Registry output: unknown format");
