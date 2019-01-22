@@ -28,3 +28,4 @@ Convert between different ABAP file formats.
 * With or without carriage returns?
 * No validation of data consistency
 * However validation of format consistency?
+* XML is UTF-8 without byte order mark

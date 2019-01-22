@@ -1,7 +1,7 @@
+import {DOMA, DTEL} from "./objects/";
 import {ABAPGit} from "./formats/abapgit";
 import {IFile} from "./_ifile";
 import {IObject} from "./objects/_iobject";
-import {DOMA} from "./objects/doma";
 import {ObjectType} from "./object_types";
 import {Format} from "./formats";
 import {HTML} from "./formats/html";
@@ -32,6 +32,10 @@ export class Registry {
 
 // todo, add the other input formats here?
 
+    if (git === undefined) {
+      throw new Error("No parser found for file: " + file.getFilename());
+    }
+
     return this;
   }
 
@@ -39,22 +43,35 @@ export class Registry {
 // todo
   }
 
-  public findOrCreateObject(type: ObjectType, name: string): IObject {
-    for (const obj of this.objects) {
-      if (obj.getType() === type && obj.getName() === name) {
-        return obj;
+  public findObject(type: ObjectType, name: string): IObject | undefined {
+    for (const objj of this.objects) {
+      if (objj.getType() === type && objj.getName() === name) {
+        return objj;
       }
+    }
+    return undefined;
+  }
+
+  public findOrCreateObject(type: ObjectType, name: string): IObject {
+    let obj = this.findObject(type, name);
+    if (obj !== undefined) {
+      return obj;
     }
 
 // todo, change this to some dynamic stuff
     switch (type) {
       case ObjectType.DOMA:
-        const obj = new DOMA(name);
-        this.objects.push(obj);
-        return obj;
+        obj = new DOMA(name);
+        break;
+      case ObjectType.DTEL:
+        obj = new DTEL(name);
+        break;
       default:
-        throw new Error("Unknown object type");
+        throw new Error("Registry, unknown object type");
     }
+
+    this.objects.push(obj);
+    return obj;
   }
 
   public output(format: Format): IFile[] {

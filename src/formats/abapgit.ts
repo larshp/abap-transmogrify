@@ -2,7 +2,7 @@ import {IInput} from "./_iinput";
 import {IFile} from "../_ifile";
 import {ObjectType} from "../object_types";
 import {IParser} from "./_iparser";
-import {ABAPGitDOMA} from "./abapgit/doma";
+import * as abapGit from "./abapgit/";
 import {IOutput} from "./_ioutput";
 import {IObject} from "../objects/_iobject";
 
@@ -11,9 +11,11 @@ export class ABAPGit implements IInput, IOutput {
   public output(object: IObject): IFile[] {
     switch (object.getType()) {
       case ObjectType.DOMA:
-        return new ABAPGitDOMA().write(object);
+        return new abapGit.ABAPGitDOMA().write(object);
+      case ObjectType.DTEL:
+        return new abapGit.ABAPGitDTEL().write(object);
       default:
-        throw new Error("ABAPGit: Unsupported object type " + object.getType());
+        throw new Error("ABAPGit: Unsupported object type " + object.getTypeAsString());
     }
   }
 
@@ -23,6 +25,8 @@ export class ABAPGit implements IInput, IOutput {
 
     if (file.getFilename().match(/\.doma\.xml$/)) {
       return {type: ObjectType.DOMA, name};
+    } else if (file.getFilename().match(/\.dtel\.xml$/)) {
+      return {type: ObjectType.DTEL, name};
     }
 
     return undefined;
@@ -31,7 +35,9 @@ export class ABAPGit implements IInput, IOutput {
   public getParser(type: ObjectType): IParser {
     switch (type) {
       case ObjectType.DOMA:
-        return new ABAPGitDOMA();
+        return new abapGit.ABAPGitDOMA();
+      case ObjectType.DTEL:
+        return new abapGit.ABAPGitDTEL();
       default:
         throw new Error("abapGit getParser: unknown object type");
     }

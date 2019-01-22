@@ -7,7 +7,7 @@ import {DOMA} from "../../objects/doma";
 
 export class HTMLDOMA implements IWriter {
   public write(obj: IObject): IFile[] {
-    const name = obj.getName() + "." + ObjectType[obj.getType()].toLowerCase() + ".html";
+    const name = obj.getName() + "." + obj.getTypeAsString().toLowerCase() + ".html";
 
     const doma = obj as DOMA;
 

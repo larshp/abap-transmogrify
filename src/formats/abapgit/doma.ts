@@ -3,7 +3,7 @@ import * as xml from "../../xml";
 import {IFile} from "../../_ifile";
 import {IParser} from "../_iparser";
 import {IObject} from "../../objects/_iobject";
-import {DOMA} from "../../objects/doma";
+import {DOMA} from "../../objects/";
 import {IWriter} from "../_iwriter";
 import {MemoryFile} from "../../memory_file";
 import {ABAPGitHelper} from "./_helper";
@@ -18,8 +18,8 @@ export class ABAPGitDOMA implements IParser, IWriter {
       " <asx:abap xmlns:asx=\"http://www.sap.com/abapxml\" version=\"1.0\">" + os.EOL +
       "  <asx:values>" + os.EOL +
       "   <DD01V>" + os.EOL +
-      "    <DOMNAME>ZABAPGIT_UNIT_TEST</DOMNAME>" + os.EOL +
-      "    <DDLANGUAGE>E</DDLANGUAGE>" + os.EOL +
+      "    <DOMNAME>" + doma.getName().toUpperCase() + "</DOMNAME>" + os.EOL +
+      "    <DDLANGUAGE>" + doma.getMasterLanguage() + "</DDLANGUAGE>" + os.EOL +
       "    <DATATYPE>" + doma.getDataType() + "</DATATYPE>" + os.EOL +
       "    <LENG>" + doma.getLength() + "</LENG>" + os.EOL +
       "    <OUTPUTLEN>" + doma.getOutputLength() + "</OUTPUTLEN>" + os.EOL +
@@ -36,6 +36,7 @@ export class ABAPGitDOMA implements IParser, IWriter {
     const parsed = xml.parse(file).abapGit["asx:abap"]["asx:values"].DD01V;
 
     const doma = object as DOMA;
+    doma.setMasterLanguage(parsed.DDLANGUAGE._text);
     doma.setDataType(parsed.DATATYPE._text);
     doma.setLength(parsed.LENG._text);
     doma.setOutputLength(parsed.OUTPUTLEN._text);
