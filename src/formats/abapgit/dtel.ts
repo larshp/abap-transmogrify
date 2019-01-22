@@ -31,9 +31,9 @@ export class ABAPGitDTEL implements IParser, IWriter {
     "    <SCRTEXT_M>testing</SCRTEXT_M>" + os.EOL +
     "    <SCRTEXT_L>testing</SCRTEXT_L>" + os.EOL +
     "    <DTELMASTER>E</DTELMASTER>" + os.EOL +
-    "    <DATATYPE>CHAR</DATATYPE>" + os.EOL +
-    "    <LENG>000001</LENG>" + os.EOL +
-    "    <OUTPUTLEN>000001</OUTPUTLEN>" + os.EOL +
+    "    <DATATYPE>" + dtel.getDataType() + "</DATATYPE>" + os.EOL +
+    "    <LENG>" + dtel.getLength() + "</LENG>" + os.EOL +
+    "    <OUTPUTLEN>" + dtel.getOutputLength() + "</OUTPUTLEN>" + os.EOL +
     "   </DD04V>" + os.EOL +
     "  </asx:values>" + os.EOL +
     " </asx:abap>" + os.EOL +
@@ -47,13 +47,10 @@ export class ABAPGitDTEL implements IParser, IWriter {
 
     const dtel = object as DTEL;
     dtel.setMasterLanguage(parsed.DDLANGUAGE._text);
-// todo
-    /*
-    doma.setDataType(parsed.DATATYPE._text);
-    doma.setLength(parsed.LENG._text);
-    doma.setOutputLength(parsed.OUTPUTLEN._text);
-    doma.setDescription(parsed.DDTEXT._text);
-    */
+    dtel.setDataType(parsed.DATATYPE._text);
+    dtel.setLength(parsed.LENG._text);
+    dtel.setOutputLength(parsed.OUTPUTLEN._text);
+    dtel.setDescription(parsed.DDTEXT._text);
   }
 
 }
