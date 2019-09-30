@@ -3,18 +3,18 @@
 
 Convert between different ABAP file formats.
 
-| Type | abapGit | ADT  | gitCTS | SAPLink | HTML |
-| ---- | ----    | ---- | ----   | ----    | ---- |
-| CLAS | _ _     | _ _  | _ _    | _ _     | N/A  |
-| DCLS | _ _     | _ _  | _ _    | _ _     | N/A  |
-| DDLS | _ _     | _ _  | _ _    | _ _     | N/A  |
-| DOMA | R W     | _ _  | _ _    | _ _     | W    |
-| DTEL | _ _     | _ _  | _ _    | _ _     | _    |
-| FUGR | _ _     | _ _  | _ _    | _ _     | N/A  |
-| INTF | _ _     | _ _  | _ _    | _ _     | N/A  |
-| MSAG | _ _     | _ _  | _ _    | _ _     | _    |
-| TABL | _ _     | _ _  | _ _    | _ _     | _    |
-| XSLT | _ _     | _ _  | _ _    | _ _     | N/A  |
+| Type | abapGit | ADT  | gCTS | SAPLink | HTML |
+| ---- | ----    | ---- | ---- | ----    | ---- |
+| CLAS | _ _     | _ _  | _ _  | _ _     | N/A  |
+| DCLS | _ _     | _ _  | _ _  | _ _     | N/A  |
+| DDLS | _ _     | _ _  | _ _  | _ _     | N/A  |
+| DOMA | R W     | _ _  | _ _  | _ _     | W    |
+| DTEL | _ _     | _ _  | _ _  | _ _     | _    |
+| FUGR | _ _     | _ _  | _ _  | _ _     | N/A  |
+| INTF | _ _     | _ _  | _ _  | _ _     | N/A  |
+| MSAG | _ _     | _ _  | _ _  | _ _     | _    |
+| TABL | _ _     | _ _  | _ _  | _ _     | _    |
+| XSLT | _ _     | _ _  | _ _  | _ _     | N/A  |
 
 ~~BDEF~~
 ~~DEVC~~
